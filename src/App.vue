@@ -1,10 +1,38 @@
 <template>
-  <v-app>
-    <v-app-bar app>
-      <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
-      </v-toolbar-title>
+  <v-app id="lawson">
+    <v-navigation-drawer
+      v-model="drawer"
+      app
+      clipped
+    >
+      <v-list dense>
+        <v-list-item>
+          <v-list-item-action>
+            <v-icon>mdi-view-dashboard</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Dashboard</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item>
+          <v-list-item-action>
+            <v-icon>mdi-settings</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Settings</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+
+    <v-app-bar 
+    app
+    clipped-left
+    >
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-toolbar-title>Lawson Busch</v-toolbar-title>
+      <router-link to="/about" class="font-weight-light"> About</router-link> |
+      <router-link to="/projects" class="font-weight-light"> Projects</router-link>
       <v-spacer></v-spacer>
       <v-btn
         text
@@ -16,7 +44,7 @@
     </v-app-bar>
 
     <v-content>
-      <HelloWorld/>
+      <router-view/>
     </v-content>
   </v-app>
 </template>
@@ -31,7 +59,10 @@ export default Vue.extend({
     HelloWorld,
   },
   data: () => ({
-    //
+    drawer: null,
   }),
+  created () {
+    this.$vuetify.theme.dark = true;
+  },
 });
 </script>
