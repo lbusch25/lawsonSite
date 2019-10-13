@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-export default class ProjectList extends Vue{
-    
+export default class ProjectList extends Vue {
+
 }
 </script>
